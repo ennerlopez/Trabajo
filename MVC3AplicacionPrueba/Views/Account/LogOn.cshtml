@@ -1,0 +1,48 @@
+﻿@model MVC3AplicacionPrueba.Models.LogOnModel
+
+@{
+    ViewBag.Title = "Log On";
+}
+
+
+
+@Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.")
+
+@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    <div >
+        <fieldset>
+            
+
+           <table class="chooseLista colorBlanco Negrita">
+               <tr>
+                   <td class="colorAmarillo Negrita" colspan="2">Datos</td>
+               </tr>
+               <tr>
+                   <td colspan="2">Por Favor Introduzca Su Nombre De Usuario y Contraseña. </td>
+               </tr>
+               <tr>
+                    <td>Usuario:</td>
+                    <td> @Html.TextBoxFor(m => m.UserName, new { @class = "validate[required] text-input"})
+                    
+               </td>
+                </tr>
+                <tr>
+                    <td>Contraseña:</td>
+                    <td style="color: black;"> @Html.PasswordFor(m => m.Password, new { @class = "validate[required] text-input" })
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>  @Html.CheckBoxFor(m => m.RememberMe)
+                ¿Recuerdame?</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Ingresar" /></td>
+                </tr>
+            </table>
+        
+        </fieldset>
+    </div>
+}

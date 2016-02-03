@@ -1,0 +1,113 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Modelado.ModelOrdenes.ModelOrden>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="@Url.Content("~/Scripts/CorteOrdenes/EliminarOrden.js")" type="text/javascript"></script>
+
+
+<p>
+   @Html.ActionLink("+ Nuevo", "CrearOrden", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+</p>
+<br/>
+<table class="tablaAjax">
+     <thead>
+     <tr>
+         <th>
+             Codigo
+         </th>
+         <th>
+             Cliente
+         </th>
+         <th>
+             Cantidad
+         </th>
+         <th>
+             Fecha
+         </th>
+         <th>
+             Hoja Bulto
+         </th>
+        
+          <th class="AnchuraBotonesEdicion"></th>
+         <th class="AnchuraBotonesEdicion"></th>
+         <th class="AnchuraBotonesEdicion"></th>
+         <th class="AnchuraBotonesEdicion"></th>
+            <th class="AnchuraBotonesEdicion"></th>
+     </tr>
+     </thead>
+    <tbody>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreCliente)
+                </td>
+       
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantida)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaCorte)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem=>item.descripcionTieneHojaBulto)
+                </td>
+        
+                
+                
+                 
+                
+                <td>
+                    <a class="BotonEdit" href='@Url.Action("Edit", new { id = item.codigo })'>
+                        <img alt="" src='@Url.Content("~/Content/BotonesTabla/Edit.png")' />
+                    </a>  
+                
+                </td>
+                <td>
+                    <a class="BotonDelete elimina">
+                        <img alt="" src="@Url.Content("~/Content/BotonesTabla/Delete.png")" /> 
+                    </a>
+            
+                </td>
+                
+                <td>
+                    <a class="BotonAgregarHojaBulto" href="@Url.Action("CrearHojaBultos","HojaBultos", new { id = item.codigo })">
+                        <img alt="" src="@Url.Content("~/Content/BotonesTabla/HojaBulto.png")" /> 
+                    </a>
+            
+                </td>
+                
+                  <td>
+                <a class="BotonTamano BotonEditarHojaBulto" href="@Url.Action("EditHojaBulto","HojaBultos", new { id = item.codigo })">
+                    <img alt="" src="@Url.Content("~/Content/BotonesTabla/EditHojaBulto.png")" /> 
+                </a>
+            
+                 </td>
+
+
+                <td>
+                <a class="BotonTamano BotonGenerarHojaBultos" href="@Url.Action("GenerarHojaBulto","HojaBultos", new { id = item.codigo })">
+                    <img alt="" src="@Url.Content("~/Content/BotonesTabla/generarHojaBulto.png")" /> 
+                </a>
+            
+                 </td>
+                 
+                       
+               
+                 
+
+        
+        
+
+                
+
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+
+</table>

@@ -1,0 +1,45 @@
+﻿@using MVC3AplicacionPrueba.Models
+@model MVC3AplicacionPrueba.Models.FuncionEntidad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<fieldset>
+   
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo">Detalle Funciones</td>
+        </tr>
+        <tr>
+            <td>Descripción:</td>
+            <td> @Html.DisplayFor(model => model.descripcionFuncion)</td>
+        </tr>
+        <tr>
+            <td>Controlador</td>
+            <td> @Html.DisplayFor(model => model.accionContralador)</td>
+        </tr>
+        <tr>
+            <td>Acción</td>
+            <td> @Html.DisplayFor(model => model.accionFuncion)</td>
+        </tr>
+         <tr>
+            <td>Menu:</td>
+            <td> @Html.DisplayFor(model => model.MenuEntidad.descripcionMenu)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="colorBlanco">  @Html.ActionLink("Editar", "Edit", new { id = Model.codigoFuncion }, new { @class = "btn btn-primary NoSubrayado" })</td>
+        </tr>
+    </table>
+   
+</fieldset>
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

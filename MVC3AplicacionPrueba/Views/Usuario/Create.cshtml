@@ -1,0 +1,60 @@
+﻿@using MVC3AplicacionPrueba.Models
+@model MVC3AplicacionPrueba.Models.ModelUsuario
+
+@{
+    ViewBag.Title = "Usuario";
+}
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("Create", "Usuario", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    
+   <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Crear Usuario</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td> 
+            @Html.EditorFor(model => model.nickUsuario)
+            @Html.ValidationMessageFor(model => model.nickUsuario)
+       
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>   @Html.TextBoxFor(model => model.password, new { @class = "validate[required]" })
+            </td>
+        </tr>
+        <tr>
+            <td>Cambio Password:</td>
+            <td> @Html.DropDownListFor(model => model.codigoCambioPassword, new SelectList(Data.listaDeSiNo(), "codigo", "descripcion"), "-- Seleccione --")
+                @Html.ValidationMessageFor(model => model.codigoCambioPassword)
+            </td>
+        </tr>
+        <tr>
+            <td>Perfil:</td>
+            <td> @Html.DropDownListFor(model => model.listaPerfiles, new SelectList(Model.listaPerfiles, "codigoPerfil", "nombrePerfil"), "selecciones una opcion")
+            @Html.ValidationMessageFor(model => model.codigoPerfil)
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>   <input type="submit" value="Guardar" /></td>
+        </tr>
+            
+    </table> 
+    
+    
+}
+ <div style="height: 48px;" >
+    
+        <a class="BotonBack" href="@Url.Action("Index")">
+            <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+        </a>
+
+    </div>

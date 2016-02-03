@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.LineasProduccion>
+
+@{
+    ViewBag.Title = "Lineas de Produccion";
+}
+
+
+<p>
+       @Html.ActionLink("+ Nuevo", "Create", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+   
+ </p>
+<br/>
+
+
+<table class="tabla">
+    <thead>
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Comentario
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreLinea)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comentarioLinea)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id=item.codigoLinea }) |
+                    @Html.ActionLink("Detalle", "Details", new { id=item.codigoLinea }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoLinea })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+</table>

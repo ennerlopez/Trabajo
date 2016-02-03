@@ -1,0 +1,42 @@
+﻿@model MVC3AplicacionPrueba.Models.Estilo
+
+@{
+    ViewBag.Title = "Estilo";
+}
+
+
+@using (Html.BeginForm()) {
+     <table class="chooseLista colorBlanco Negrita">
+            <tr>
+                <td class="colorAmarillo" colspan="2">Eliminar Estilo</td>
+            </tr>
+            <tr>
+                <td colspan="2">¿Esta seguro que Desea Eliminar Esto?</td>
+            </tr>
+             <tr>
+                <td>Nombre:</td>
+                <td> @Html.DisplayFor(model => model.nombreEstilo)</td>
+            </tr>
+            <tr>
+                <td>Comentario:</td>
+                <td>  @Html.DisplayFor(model => model.comentario)</td>
+            </tr>
+           <tr>
+         </tr>
+        
+         <tr>
+             <td></td>
+             <td> <input type="submit" value="Eliminar" /></td>
+         </tr>
+        </table>
+    
+}
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>
+

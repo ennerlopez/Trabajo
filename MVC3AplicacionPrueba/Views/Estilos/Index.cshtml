@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Estilo>
+
+@{
+    ViewBag.Title = "Estilo";
+}
+
+
+<p>
+       @Html.ActionLink("+ Nuevo", "Create", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+   
+</p>
+<br/>
+
+
+
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>
+                nombreEstilo
+            </th>
+            <th>
+                comentario
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreEstilo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comentario)
+                </td>
+                <td>
+                    @Html.ActionLink("Edita", "Edit", new { id=item.codigoEstilo }) |
+                    @Html.ActionLink("Detalle", "Details", new { id=item.codigoEstilo }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoEstilo })|
+                    @Html.ActionLink("Agregar Operaciones", "AgregarOperaciones", new { id=item.codigoEstilo })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+</table>

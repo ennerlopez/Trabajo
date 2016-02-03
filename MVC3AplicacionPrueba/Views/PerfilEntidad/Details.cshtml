@@ -1,0 +1,39 @@
+﻿@model MVC3AplicacionPrueba.Models.PerfilEntidad
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<fieldset>
+  
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="3">Detalle Perfil</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>  @Html.DisplayFor(model => model.nombrePerfil)</td>
+           
+        </tr>
+        <tr>
+            <td>Descripción</td>
+            <td>  @Html.DisplayTextFor(model => model.nombrePerfil)</td>
+        </tr>
+        <tr>
+            <td></td>
+             <td> @Html.ActionLink("Editar", "Edit", new { id=Model.codigoPerfil },new{@class="btn btn-primary NoSubrayado"})</td>
+        </tr>
+    </table>
+
+</fieldset>
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

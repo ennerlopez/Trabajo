@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Modelado.ModelGrupo.GrupoModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            codigo
+        </th>
+        <th>
+            nombre
+        </th>
+        <th>
+            descripcion
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.codigo }) |
+           
+            @Html.ActionLink("Delete", "Delete", new { id = item.codigo })
+        </td>
+    </tr>
+}
+
+</table>

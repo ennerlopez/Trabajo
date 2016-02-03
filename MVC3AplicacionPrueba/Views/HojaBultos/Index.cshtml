@@ -1,0 +1,116 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.HojaBulto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+
+        var oTable = $('#dataTableId').dataTable({
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers",
+            /*==========================================*/
+            "fnFooterCallback": function (nRow, aaData, iStart, iEnd, aiDisplay) {
+
+                var total_costs = 0;
+                var column = 5;
+                /*Calculate the total for all rows, even outside this page*/
+                for (var i = 0; i < aaData.length; i++) {
+                    /*Have to strip out extra characters so parsefloat and parseInt work right*/
+                    var valor = $(aaData[i][column]);
+
+                    total_costs += parseFloat(valor.val());
+
+                }
+
+
+                /*calculate totals for this page*/
+
+
+                /*modify the footer row*/
+                var nCells = nRow.getElementsByTagName('th');
+
+                nCells[column].innerHTML = 'Total: ' + total_costs;
+            }
+
+            /*===============================================*/
+        });
+
+        var rows = oTable.fnGetNodes();
+        var cells = [];
+        for (var i = 0; i < rows.length; i++) {
+            // Get HTML of 3rd column (for example)
+           var valor = $(rows[i]).find("td:eq(5)").html();
+            alert($(valor).val());
+        }
+
+    });
+    
+    
+
+</script>
+
+@using (Html.BeginForm("Create", "ModuloEntidad", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    <table id="dataTableId">
+        <thead>
+            <tr>
+              
+                <th>Sección</th>
+                  <th>Número Bulto</th>
+                <th>Capa</th>
+                <th>
+                    Talla
+                </th>
+                <th>
+                    Cantidad Pronosticada
+                </th>
+                <th>
+                    Cantidad Real Cortada
+                </th>
+                <th></th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                            <td> @Html.DisplayFor(modelItem => item.nroSeccion)</td>   
+                    <td> @Html.DisplayFor(modelItem => item.numeroBulto)</td> 
+          
+                    <td> @Html.DisplayFor(modelItem => item.capaCorte)</td>  
+                 
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tallaCompleta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantidad)
+                    </td>
+                   
+                    <td>
+                        <input type="text" name="lname" class="validate[required,custom[onlyLetterSp]]" value="@item.cantidad" />       </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+             <th></th>
+                <th></th>
+               <th></th>
+               <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+        </tfoot>
+    </table>
+    
+}
+
+

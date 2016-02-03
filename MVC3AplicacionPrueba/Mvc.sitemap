@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-3.0 MvcSiteMapSchema.xsd"
+            enableLocalization="true">
+
+    <mvcSiteMapNode title="Inicio" controller="Home" action="Index" >
+    <mvcSiteMapNode title="¡Sobre Nosotros!" controller="Home" action="About"/>
+    
+    <mvcSiteMapNode title="Herramientas" clickable="false">
+
+      <mvcSiteMapNode title="Mantenimiento" clickable="false">
+        
+        <mvcSiteMapNode title="Menu" controller="MenuEntidad" action="Index">
+          <mvcSiteMapNode title="Crear" controller="MenuEntidad" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="MenuEntidad" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="MenuEntidad" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="MenuEntidad" action="Delete"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Modulo" controller="ModuloEntidad" action="Index">
+          <mvcSiteMapNode title="Crear" controller="ModuloEntidad" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="ModuloEntidad" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="ModuloEntidad" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="ModuloEntidad" action="Delete"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Funciones" controller="FuncionEntidad" action="Index">
+          <mvcSiteMapNode title="Crear" controller="FuncionEntidad" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="FuncionEntidad" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="FuncionEntidad" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="FuncionEntidad" action="Delete"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Perfil" controller="PerfilEntidad" action="Index">
+          <mvcSiteMapNode title="Crear" controller="PerfilEntidad" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="PerfilEntidad" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="PerfilEntidad" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="PerfilEntidad" action="Delete"/>
+          <mvcSiteMapNode title="Funciones" controller="PerfilEntidad" action="AgregarFunciones"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Usuario" controller="usuario" action="Index">
+          <mvcSiteMapNode title="Crear" controller="usuario" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="usuario" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="usuario" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="usuario" action="Delete"/>
+        </mvcSiteMapNode>
+
+
+
+      </mvcSiteMapNode>
+
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="Planificación" clickable="false">
+      <mvcSiteMapNode title="Provisional" clickable="false">
+
+        <mvcSiteMapNode title="Cliente" controller="cliente" action="Index">
+          <mvcSiteMapNode title="Crear" controller="cliente" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="cliente" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="cliente" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="cliente" action="Delete"/>
+          <mvcSiteMapNode  title="Tallas" controller="cliente" action="ingresarTallas"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Departamento" controller="departamentos" action="Index">
+          <mvcSiteMapNode title="Crear" controller="departamentos" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="departamentos" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="departamentos" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="departamentos" action="Delete"/>
+          <mvcSiteMapNode  title="Operaciones" controller="departamentos" action="agregarOperaciones"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Operación" controller="operaciones" action="Index">
+          <mvcSiteMapNode title="Crear" controller="operaciones" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="operaciones" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="operaciones" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="operaciones" action="Delete"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Grado" controller="grado" action="Index">
+          <mvcSiteMapNode title="Crear" controller="grado" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="grado" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="grado" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="grado" action="Delete"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Lineas" controller="lineaProduccion" action="Index">
+          <mvcSiteMapNode title="Crear" controller="lineaProduccion" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="lineaProduccion" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="lineaProduccion" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="lineaProduccion" action="Delete"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Estilo" controller="Estilos" action="Index">
+          <mvcSiteMapNode title="Crear" controller="Estilos" action="Create"/>
+          <mvcSiteMapNode title="Editar" controller="Estilos" action="Edit"/>
+          <mvcSiteMapNode title="Detalle" controller="Estilos" action="Details"/>
+          <mvcSiteMapNode title="Eliminar" controller="Estilos" action="Delete"/>
+          <mvcSiteMapNode title="Operaciones" controller="Estilos" action="AgregarOperaciones"/>
+        </mvcSiteMapNode>
+
+        <mvcSiteMapNode title="Orden" controller="Ordenes" action="Index">
+          <mvcSiteMapNode title="Crear" controller="Ordenes" action="CrearOrden"/>
+          <mvcSiteMapNode title="Editar" controller="Ordenes" action="Edit"/>
+          <mvcSiteMapNode title="Crear Hoja Bulto" controller="HojaBultos" action="CrearHojaBultos"/>
+         </mvcSiteMapNode>
+
+      </mvcSiteMapNode>
+      <mvcSiteMapNode title="Corte" clickable="false">
+        <mvcSiteMapNode title="Confirmar Hoja Bultos" clickable="false">
+          <mvcSiteMapNode title="Buscar Corte" controller="HojaBultos" action="busquedaHojaBulto"/>
+        </mvcSiteMapNode>
+        <mvcSiteMapNode title="Confirmar Hoja Bultos" controller="HojaBultos" action="ConfirmarHojaBultos"/>
+        <mvcSiteMapNode title="Cupones" controller="Cupon" action="creacionCupones"/>
+      </mvcSiteMapNode>
+    
+    </mvcSiteMapNode>
+
+
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

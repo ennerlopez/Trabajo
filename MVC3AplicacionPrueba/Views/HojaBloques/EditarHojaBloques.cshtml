@@ -1,0 +1,104 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelHojaBloques.Dto.ModelHojaBloques
+
+@{
+    ViewBag.Title = "Planificación";
+}
+
+<script src="@Url.Content("~/Scripts/HojaBloques/PlanificarHojaBloques.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "formularioHojaBloquesEditar" }))
+{
+
+
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td>Linea</td> <td>  @Html.DropDownListFor(model => model.linea, new SelectList(Model.lineas, "value", "text"), "Seleccione Linea", new { @class = "validate[required]", disabled = "disabled" }) </td>
+            <td>Capacidad por hora</td> <td> <input type="text" id="capacidadXHora" class="validate[required]"/>                
+                                        </td>
+                
+            <td>Semana</td>    <td> 
+                                   @*<input disabled="disabled" type="text" id="semana" class="validate[required]"/> *@               
+                                   @Html.TextBoxFor(bloques => bloques.semana,new {@class="validate[required]",@readonly="readonly"})
+                               </td>
+             
+            <td>Año</td> <td>
+                             @*<input readonly="readonly" disabled="disabled" type="text" id="year" class="validate[required]"/>    *@            
+                            
+                             @Html.TextBoxFor(bloques => bloques.year,new {@class="validate[required]",@readonly="readonly"})
+                         </td>
+                
+        </tr>
+            
+        <tr>
+            <td>Corte</td> <td>   @Html.DropDownListFor(model => model.cortes, new SelectList(Model.cortes, "value", "text"), "Seleccione El Corte", new {@class = "validate[required]"})  </td>
+                
+            <td>Color</td>    <td>
+                                  
+                                  @Html.DropDownListFor(model => model.color, new SelectList(Model.colores, "text", "text"),  "Seleccione El Color", new { @class = "validate[required]", disabled = "disabled" }) 
+                              
+                                  @*@Html.TextBoxFor(bloques => bloques.color,new {@class="validate[required]",@readonly="readonly"})*@
+                              </td>
+             
+            <td colspan="4"><button id="AlDia" type="button">Poner al Dia</button>     <button id="botonAgregarAPlanificacion" type="submit">Agregar</button>
+                                  </td>
+                
+        </tr>
+        
+    </table>
+   <br/>
+        
+    <table class="TablaHojasBloques">
+        <thead>
+            <tr>
+                <th>Bloque</th>
+                <th>Corte</th>
+                <th>Seccion</th>    
+                <th>Bulto</th>
+                <th>Cantidad</th>
+                <th>Talla</th>
+                <th>Color</th>
+                <th>Semana</th>
+                <th>Año</th>    
+                <th>Serie</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var item in Model.bloques) {
+            <tr>
+                <td>@item.bloque</td>
+                <td>@item.corte</td>
+                <td>@item.seccion</td>
+                <td>@item.capaBulto</td>
+                <td>@item.cantidad</td>
+                <td>@item.tallaCompleta</td>
+                <td>@item.color</td>
+                <td>@item.semana</td>
+                <td>@item.year</td>
+                <td>@item.serie</td>
+            </tr>
+        }
+        </tbody>
+        <tfoot> 
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th ></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th ></th>  
+             <th></th>  
+        </tfoot>
+
+    </table>
+    
+ }
+ 
+      <br/>
+    <p>
+   <button id="EditarPlanificacion" type="button">Guardar</button>
+   </p>
+ 
+

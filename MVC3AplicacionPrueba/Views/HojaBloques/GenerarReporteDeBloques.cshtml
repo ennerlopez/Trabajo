@@ -1,0 +1,62 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelHojaBloques.ModelPreguntaReporteHojaBloque
+
+@{
+    ViewBag.Title = "Reporte Hoja Bloques";
+}
+
+@using (Html.BeginForm("hojaBloquesReport", "HojaBloques", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    
+   
+    <table class="chooseLista colorBlanco Negrita">
+        <tr class="colorAmarillo">
+            <td colspan="2">
+                Imprimir Hoja Bloque
+            </td>
+            
+        </tr>
+        
+        <tr>
+            <td>
+               Linea:
+            </td>
+            <td>
+                  @Html.DropDownListFor(model => model.lineas, new SelectList(Model.lineas, "value", "text"), "Seleccione Linea", new { @class = "validate[required]" })       
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Semana:
+            </td>
+            <td>
+                  @Html.EditorFor(model => model.semana)
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                Año:
+            </td>
+            <td>
+                 @Html.EditorFor(model => model.year)
+            </td>
+        </tr>
+        
+          <tr>
+            <td>
+                Color
+            </td>
+            <td>
+                         @Html.DropDownListFor(model => model.colores, new SelectList(Model.colores, "text", "text"), "Seleccione El Color", new {@class = "validate[required]"})       
+              </td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Imprimir" /></td>
+        </tr>
+    </table>
+    
+    
+}
+

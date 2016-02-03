@@ -1,0 +1,41 @@
+﻿@model MVC3AplicacionPrueba.Models.Grado
+
+@{
+    ViewBag.Title = "Grado";
+}
+
+@using (Html.BeginForm("Create", "Grado", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Creación De Grado </td>
+        </tr>
+        <tr>
+            <td>Descripcion:</td>
+            <td>@Html.TextBoxFor(model => model.descripcionGrado, new {@class = "validate[required]"})</td>
+        </tr>
+            
+        <tr>
+            <td>Valor Grado:</td>
+            <td>@Html.TextBoxFor(model => model.valorGrado, new {@class = "validate[required]"})</td>
+        </tr>
+         
+             <tr>
+                 <td></td>
+                 <td>  <input type="submit" value="Guardar" /></td>
+            </tr>
+                     
+
+    </table>
+
+
+    }
+    
+    <br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

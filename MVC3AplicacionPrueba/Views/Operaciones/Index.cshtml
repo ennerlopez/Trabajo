@@ -1,0 +1,61 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Operacione>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("+ Nuevo", "Create", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+</p>
+
+<br/>
+<table class="tabla">
+    <thead>
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Grado
+        </th>
+        <th>
+            Tiempo Operación
+        </th>
+        <th>
+            Tiempo Bulto
+        </th>
+        <th>
+            Valor
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreOperacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigoGrado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.duracionEnSegundosOperacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tiempoManejoBultoOperacion)
+                </td>
+                <td>
+                   @string.Format("{0:0.0000}",item.valorPiezaOperacion)
+                </td>
+                <td>
+                   
+                    @Html.ActionLink("Editar", "Edit", new { id=item.codigoOperacion }) |
+                    @Html.ActionLink("Detalle", "Details", new { id=item.codigoOperacion }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id=item.codigoOperacion })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+</table>

@@ -1,0 +1,30 @@
+﻿@model MVC3AplicacionPrueba.Reportes.Entidades.ModelCapas
+
+@{
+    ViewBag.Title = "Impresión Hoja Bulto";
+}
+
+@using (Html.BeginForm("reportHojaBultosTallas", "Ordenes", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{   
+   
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="3">Impresión Hoja Bulto </td>
+        </tr>
+        <tr>
+            <td>Código Orden:</td>
+            <td> @Html.TextBoxFor(model => model.codigoCorte, new { @class = "validate[required]" })
+               
+            </td>
+            <td></td>
+        </tr>
+       
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="Imprimir" />  </td>
+            <td></td> 
+        </tr>
+    
+        </table>
+
+}

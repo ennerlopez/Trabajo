@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Grado>
+
+@{
+    ViewBag.Title = "Grado";
+}
+
+<p>
+    @Html.ActionLink("+ Nuevo", "Create", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+</p>
+<br />
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>
+                Grado
+            </th>
+            <th>
+                Valor
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descripcionGrado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.valorGrado)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id=item.codigoGrado }) |
+                    @Html.ActionLink("Detalle", "Details", new { id=item.codigoGrado }) |
+                    @Html.ActionLink("Elimnar", "Delete", new { id=item.codigoGrado })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+
+</table>

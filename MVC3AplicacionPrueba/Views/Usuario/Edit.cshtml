@@ -1,0 +1,52 @@
+﻿@using MVC3AplicacionPrueba.Models
+@model MVC3AplicacionPrueba.Models.Usuario
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+@using (Html.BeginForm("Edit", "Usuario", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Editar Usuario</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td> @Html.TextBoxFor(model => model.nombreUsuario, new {@class = "validate[required, custom[onlyLetterSp]]"})
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>   @Html.TextBoxFor(model => model.passwordUsuario, new {@class = "validate[required]"})
+            </td>
+        </tr>
+        <tr>
+            <td>Cambio Password:</td>
+            <td> @Html.DropDownListFor(model => model.cambioPasswordUsuario, new SelectList(Data.listaDeSiNo(), "codigo", "descripcion"), "-- Seleccione --")
+              
+            </td>
+        </tr>
+        <tr>
+            <td>Codigo Perfil:</td>
+            <td>  @Html.DropDownListFor(model => model.codigoPerfil, new SelectList(Data.listaDePerfilEntidad(), "codigoPerfil", "nombrePerfil"), "-- Seleccione --")
+               
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>   <input type="submit" value="Guardar" /></td>
+        </tr>
+            
+    </table>
+
+
+    <div style="height: 48px;" >
+    
+        <a class="BotonBack" href="@Url.Action("Index")">
+            <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+        </a>
+
+    </div>
+}

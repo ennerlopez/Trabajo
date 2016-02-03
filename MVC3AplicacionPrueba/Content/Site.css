@@ -1,0 +1,539 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body {
+    /*background-color: #5c87b2;*/
+    background-image: url(Imagenes/fondoGrisoOscuro.png);
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+   color: #000000;
+/*
+color: #F0A31D;*/
+}
+/*
+a:link {
+    color: #034af3;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #505abc;
+}
+
+a:hover {
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active {
+    color: #12eb87;
+}
+*/
+
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6 {
+    font-size: 1.5em;
+    color: #000;
+}
+
+h1 {
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+h2 {
+    padding: 0 0 10px 0;
+}
+
+h3 {
+    font-size: 1.2em;
+}
+
+h4 {
+    font-size: 1.1em;
+}
+
+h5, h6 {
+    font-size: 1em;
+}
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+/* you can specify a greater or lesser percentage for the 
+page width. Or, you can specify an exact pixel width. */
+.page {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header, #header {
+    position: relative;
+    margin-bottom: 0px;
+    color: #000;
+    padding: 0;
+}
+
+header h1, #header h1 {
+    font-weight: bold;
+    padding: 5px 0;
+    margin: 0;
+    color: #F0A31D; /*#1E90FF;*/
+    border: none;
+    line-height: 1.5em;
+    font-size: 46px !important;
+    text-shadow: 2px 2px 4px #111;
+}
+
+#main 
+{
+    
+    
+    padding: 30px 30px 15px 30px;
+    background-color: #E1E1E1;
+    background-image: url(Imagenes/gris.png);
+    /*border: blue 1px solid;*/
+    border-radius: 0px 0 0 0;
+    -webkit-border-radius:0px 0 0 0;
+    -moz-border-radius: 0px 0 0 0;
+   /* border: #000000 2px solid;
+*/
+}
+
+footer, 
+#footer {
+ /*   background-color: white;
+  */ background-image: url(Imagenes/fondoAzulClaroGranulado.png);
+    font-weight: bold;
+   color: #F0A31D;
+    padding: 10px 0;
+    text-align: center;
+    line-height: normal;
+    margin: 0 0 30px 0;
+    font-size: .9em;
+    border-radius: 0 0 4px 4px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    height: 50px;
+     text-shadow: 2px 2px 4px #111;
+
+  /*   border: blue 1px solid;
+*/
+}
+
+
+
+/* FORM LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+.colorAmarillo {
+     color: #F0A31D;
+      text-shadow: 2px 2px 4px #111;
+    font-weight: bold;
+}
+
+.colorAzul {
+     color: #043787;
+      text-shadow: 2px 2px 4px #1D63D2;
+    font-weight: bold;
+}
+
+
+fieldset {
+    border: 1px solid cadetblue ;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+   
+}
+
+textarea {
+    min-height: 75px;
+}
+
+input[type="text"], 
+input[type="password"] {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+    width: 200px;
+}
+
+select {
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+}
+
+input[type="submit"] {
+    font-size: 1.2em;
+    padding: 5px;
+}
+
+/* TABLE
+----------------------------------------------------------*/
+
+table {
+    /*border: solid 1px #000000;*/
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 5px;
+ /*   border: solid 1px black;*/
+}
+
+table th {
+    padding: 6px 5px;
+    text-align: left;
+    background-color: #e8eef4;
+    border: solid 1px #e8eef4;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+.clear {
+    clear: both;
+}
+
+.error {
+    color: Red;
+}
+
+nav, 
+#menucontainer {
+    margin-top: 10px;
+   
+}
+#miMenu 
+{
+
+   /* background-image: url(Imagenes/FondoMenu.png); /*burlywood;*/
+   /* background-color: #D0D4D5;
+    border-radius: 4px 4px 0 0px;
+    -webkit-border-radius: 4px 4px 0 0px;
+    -moz-border-radius: 4px 4px 0 0px;/**/
+
+    
+}
+
+div#title {
+    display: block;
+    float: left;
+    text-align: left;
+   
+  /*  background-image: url(Imagenes/Exiid/ExiidNombre.png);
+*/
+}
+div#banner {
+    padding: 30px 30px 15px 30px;
+        height: 100px;
+    border: 2px solid #2A2B2E;
+     border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;/**/
+
+    background-image: url(Imagenes/hilos.jpg) ;
+ 
+}
+
+#logindisplay {
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    margin: 20px;
+    color: White;
+}
+
+#logindisplay a:link {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:visited {
+    color: white;
+    text-decoration: underline;
+}
+
+#logindisplay a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+/* Styles for editor and display helpers
+----------------------------------------------------------*/
+.display-label, 
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.display-field, 
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+.text-box {
+    width: 30em;
+}
+
+.text-box.multi-line {
+    height: 6.5em;
+}
+
+.tri-state {
+    width: 6em;
+}
+
+.menuModulo 
+{
+    
+    float:left;
+    text-align: center;
+     
+}
+
+#botonMenu 
+{
+    /*color: #36596F;
+ */color: black;
+ clear:left;
+   
+ margin:0 4px 40px 20px; 
+ padding: .4em 1em; text-decoration:none !important; 
+ cursor:pointer; 
+ position: relative; 
+ text-align: center; zoom: 1;
+ 
+ font-family: segoe ui, Arial, sans-serif; font-size: 1.1em; 
+  text-decoration: none; outline: none;
+ background: #D0D4D5; font-weight: bold;  outline: none;
+    border: 1px solid #D0D4D5;
+ float:left;
+    
+}
+
+.elimina {
+     cursor:pointer; 
+}
+/*
+.pretty_select1 {
+
+    outline-style: auto;
+    outline-width: 2px;
+    outline-color: dodgerblue;
+}
+
+.pretty_select1 {
+
+    outline-style: auto;
+    outline-width: 2px;
+    outline-color: dodgerblue;
+}
+*/
+
+	.ui-combobox {
+		position: relative;
+		display: inline-block;
+	}
+	.ui-combobox-toggle {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin-left: -1px;
+		padding: 0;
+		/* adjust styles for IE 6/7 */
+		*height: 1.7em;
+		*top: 0.1em;
+	}
+	.ui-combobox-input {
+		margin: 0;
+		padding: 0.3em;
+	}
+
+
+.chooseLista {
+    
+  
+    
+    background-image: url(Imagenes/fondoAzulClaroGranulado.png);
+    /* background-color: #B0C4DE;
+     */border-radius: 8px 8px 8px 8px;
+    -webkit-border-radius: 8px 8px 8px 8px;
+    -moz-border-radius: 8px 8px 8px 8px;/**/
+
+
+}
+
+.colorBlanco {
+    color: white;
+    
+}
+
+.Negrita {
+      font-weight: bold;
+}
+
+#breadCrumb {
+    
+    
+    background-image: url("Imagenes/fondoCafeoOscuroGranulado.png");
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #111;
+}
+
+#breadCrumb table tr td a  {
+    text-decoration: none ;
+    color: #FFFF99;
+    font-weight: bold;
+}
+
+#breadCrumb table tr td a:hover {
+    
+      text-decoration: none ;
+    color: #00FFFF;
+    font-weight: 900;
+}
+
+.colorAzulFuerte {
+    color: #66FFFF;
+}
+/*====================================botones*/
+
+.MiBotonNuevo img {
+    width: 55px;
+    height: 55px;
+}
+.MiBotonNuevo img:hover {
+    width: 53px;
+    height: 53px;
+}
+
+.BotonDelete img {
+    width: 30px;
+    height: 30px;
+}
+.BotonDelete img:hover {
+    width: 27px;
+    height: 27px;
+}
+
+.BotonEdit img {
+    width: 30px;
+    height: 30px;
+}
+.BotonEdit img:hover {
+    width: 27px;
+    height: 27px;
+}
+
+.BotonDetails img {
+    width: 30px;
+    height: 30px;
+}
+.BotonDetails img:hover {
+    width: 27px;
+    height: 27px;
+}
+
+.BotonTallas img {
+    width: 30px;
+    height: 30px;
+}
+.BotonTallas img:hover {
+    width: 27px;
+    height: 27px;
+}
+
+.BotonAgregarHojaBulto img {
+    width: 30px;
+    height: 30px;
+}
+.BotonAgregarHojaBulto img:hover {
+    width: 27px;
+    height: 27px;
+}
+
+.BotonOperaciones img {
+    width: 30px;
+    height: 30px;
+}
+.BotonOperaciones img:hover {
+      width: 27px;
+    height: 27px;
+}
+
+.BotonTamano img {
+    width: 30px;
+    height: 30px;
+}
+.BotonTamano img:hover {
+      width: 27px;
+    height: 27px;
+}
+
+
+
+
+.BotonBack img {
+    width: 48px;
+    height: 48px;
+}
+.BotonBack img:hover {
+    width: 45px;
+    height: 45px;
+}
+
+
+
+
+.AnchuraBotonesEdicion {
+    width: 40px;
+}
+
+.NoSubrayado {
+    text-decoration: none;
+}

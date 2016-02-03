@@ -1,0 +1,47 @@
+﻿@model MVC3AplicacionPrueba.Models.Estilo
+
+@{
+    ViewBag.Title = "Estilo";
+}
+
+
+@using (Html.BeginForm("Edit", "Estilos", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+ 
+        @Html.HiddenFor(model => model.codigoEstilo)
+
+      
+       <table class="chooseLista colorBlanco Negrita">
+           <tr>
+               <td class="colorAmarillo" colspan="2">Editar Estilo</td>
+           </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td> @Html.TextBoxFor(model => model.nombreEstilo, new { @class = "validate[required]" })
+                </td>
+            </tr>
+            <tr>
+                <td>Comentario:</td>
+                <td>   @Html.TextBoxFor(model => model.comentario, new { @class = "validate[required]" })
+                </td>
+            </tr>
+            
+            <tr>
+                <td></td>
+                <td>   <input type="submit" value="Guardar" /></td>
+            </tr>
+            
+        </table>
+
+   
+}
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>
+

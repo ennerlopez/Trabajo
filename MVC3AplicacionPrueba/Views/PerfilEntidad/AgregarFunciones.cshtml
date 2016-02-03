@@ -1,0 +1,63 @@
+﻿@model MVC3AplicacionPrueba.Models.ModelPerfil
+
+@{
+    ViewBag.Title = "AgregarFunciones";
+}
+
+  <script type="text/javascript" src="@Url.Content("~/Scripts/Perfil/AgregaFunciones.js")"></script>
+<h2>AgregarFunciones</h2>
+
+<fieldset>
+    <legend>ModelPerfil</legend>
+
+    <div class="display-label">codigo</div>
+    <div class="display-field">
+      <p id="codigoPerfil">  @Html.DisplayFor(model => model.codigo)</p>
+    </div>
+
+    <div class="display-label">nombre</div>
+    <div class="display-field">
+         @Html.DisplayFor(model => model.nombre)
+    </div>
+    
+    
+    <div class="display-label">Funciones</div>
+    
+    <table>
+        <tr>
+            <td>
+                <div id="box1Group">
+                    Búsqueda: <input type="text" name="filter" /><button type="button" name="clear">X</button><br />
+                    @Html.ListBox("view", new SelectList(Model.listaTodasLasFunciones, "codigoFuncion", "descripcionFuncion"), new { style = "height:300px;width:300px;" })
+                    <br/>
+                    <span class="countLabel"></span>
+                    <select name="storage" class="storageBox"></select>
+                </div>
+            </td>
+            <td>
+                <button id="to2" type="button"> > </button>
+                <button id="allTo2" type="button"> >> </button>
+                <button id="allTo1" type="button"> << </button>
+                <button id="to1" type="button"> < </button>
+            </td>
+            <td>
+                <div id="box2Group">
+                    Búsqueda: <input type="text" name="filter" /><button type="button" name="clear">X</button><br />
+                    <!--   <select name="view" multiple="multiple" style="height:300px;width:300px;"></select>-->
+                    @Html.ListBox("view", new SelectList(Model.listaFuncionesPorPerfil, "value", "text"), new { style = "height:300px;width:300px;" })
+                    <br />
+                    <span class="countLabel"></span>
+                    <select name="storage" class="storageBox"></select>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+   
+    <button id="EnviarFunciones" value="Enviar">Enviar</button>
+    
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

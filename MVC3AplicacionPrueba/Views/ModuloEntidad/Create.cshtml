@@ -1,0 +1,45 @@
+﻿@model MVC3AplicacionPrueba.Models.ModuloEntidad
+
+@{
+    ViewBag.Title = "Modulo";
+}
+
+@using (Html.BeginForm("Create", "ModuloEntidad", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    
+    <fieldset>
+       <table class="chooseLista colorBlanco Negrita">
+           <tr>
+               <td class="colorAmarillo" colspan="3">Creación De Modulo </td>
+           </tr>
+           <tr>
+                <td>
+                   Nombre
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.descripcion, new { @class = "validate[required,custom[onlyLetterSp]]" })
+               
+                </td>
+                <td>
+                     <input type="submit" value="Guardar" />
+                </td>
+
+
+            </tr>
+        </table>
+        
+
+        <p>
+           
+        </p>
+    </fieldset>
+}
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

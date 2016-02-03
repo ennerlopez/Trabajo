@@ -1,0 +1,87 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Modulo>
+@using MVC3AplicacionPrueba.Models;
+@{
+    ViewBag.Title = "menu";
+}
+
+
+
+
+
+    <h2>menu</h2>
+
+    <p>
+        dsds
+    </p>
+ 
+    @{
+        int n = 0;
+        string nombre = "hierarchybreadcrumb";
+
+        foreach (var item in Model)
+        {
+
+            nombre += n;
+
+
+
+            <div class="fd">
+  
+                <a tabindex="@n" href="#news-items-2" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="@nombre">
+                    <span class="ui-icon ui-icon-triangle-1-s">
+            
+                    </span>
+                    @Html.DisplayFor(modelItem => item.descripcion)
+                </a>
+   
+  
+    
+                <div id="news-items-2" class="hidden">
+                    <ul>
+            
+                        @{
+
+                            List<Menus> obtenerLista = Data.obtenerLista(item.codigoModulo);
+                        }
+          
+                        @foreach (var d in obtenerLista)
+                        {
+                            <li><a href="#">@d.descripcionMenu</a>
+                                <ul>
+                                    @{
+                                        List<Funcione> lista = Data.obtenerListaFunciones(d.codigoMenu);
+                                    }
+                            
+                                    @foreach (var fun in lista)
+                                    {
+
+                                        <li>
+                                   
+                                            @Html.ActionLink(fun.descripcionFuncion, fun.accionFuncion, "home")
+                                    
+                                
+                                        </li>
+                                    }
+                        
+                     
+                                </ul>           
+
+                            </li>
+                        }
+               
+                    </ul>
+                </div>
+     
+            </div>
+
+
+
+            nombre = "hierarchybreadcrumb";
+            n++;
+
+
+
+        }
+
+    }
+

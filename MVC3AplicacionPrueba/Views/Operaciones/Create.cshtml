@@ -1,0 +1,57 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelOperaciones.ModelOperaciones
+
+@{
+    ViewBag.Title = "Operaciones";
+}
+<script charset="utf-8" type="text/javascript" src="@Url.Content("~/Scripts/MaskTexboxt/jquery.maskedinput.js")"></script>
+<script charset="utf-8" type="text/javascript" src="@Url.Content("~/Scripts/Operaciones/OperacionesMaskTextBox.js")"></script>
+
+
+@using (Html.BeginForm("Create", "Operaciones", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+
+
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Creación De Operaciones </td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>@Html.TextBoxFor(model => model.nombre, new { @class = "validate[required]" })</td>
+        </tr>
+            
+        <tr>
+            <td>Grado:</td>
+            <td> @Html.DropDownListFor(model => model.listaGrado, new SelectList(Model.listaGrado, "value", "text"), "Seleccione un Grado", new {@class = "validate[required]"})</td>
+        </tr>
+            
+        <tr>
+            <td>Duracion:</td>
+            <td>  @Html.TextBoxFor(model => model.duracionSegundos, new { @class = "validate[required]" })</td>
+        </tr>
+      
+        <tr>
+            <td>Tiempo Bulto:</td>
+            <td>  @Html.TextBoxFor(model => model.tiempoManejoBultos, new { @class = "validate[required]" })</td>
+        </tr>
+        <tr>
+            <td>Valor Pieza:</td>
+            <td>  @Html.TextBoxFor(model => model.valorPieza, new { @class = "validate[required,custom[number]]" })</td>
+        </tr>
+           
+        <tr>
+            <td></td>
+            <td>  <input type="submit" value="Guardar" /></td>
+        </tr>
+            
+
+    </table>
+}
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

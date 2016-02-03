@@ -1,0 +1,46 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelEstilo.ModelPreguntaCrearEstilo
+
+@{
+    ViewBag.Title = "Crear Estilo";
+}
+
+@using (Html.BeginForm("Create", "Estilos", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Creación De Estilo </td>
+        </tr>
+        <tr>
+            <td>Estilo:</td>
+            <td>@Html.TextBoxFor(model => model.estilo, new {@class = "validate[required]"})</td>
+        </tr>
+            
+        <tr>
+            <td>Comentario:</td>
+            <td>@Html.TextBoxFor(model => model.comentario, new {@class = "validate[required]"})</td>
+        </tr>
+              <tr>
+            <td>Copiar estilo:</td>
+            <td>@Html.DropDownListFor(model => model.estilos, new SelectList(Model.estilos, "value", "text"), "Seleccione estilo") </td>
+        </tr>
+
+        <tr>
+                 <td></td>
+                 <td>  <input type="submit" value="Guardar" /></td>
+            </tr>
+                     
+
+    </table>
+
+
+    }
+    
+    <br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>
+

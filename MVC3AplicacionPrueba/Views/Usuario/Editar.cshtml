@@ -1,0 +1,65 @@
+﻿@model MVC3AplicacionPrueba.Models.ModelUsuario
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ModelUsuario</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.codigoUsuario)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.codigoUsuario)
+            @Html.ValidationMessageFor(model => model.codigoUsuario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nickUsuario)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nickUsuario)
+            @Html.ValidationMessageFor(model => model.nickUsuario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.codigoCambioPassword)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.codigoCambioPassword, new SelectList(Model.listaCambioPassword,"codigo","descripcion"),"-----------------")
+            @Html.ValidationMessageFor(model => model.codigoCambioPassword)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.codigoPerfil)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.codigoPerfil)
+            @Html.ValidationMessageFor(model => model.codigoPerfil)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

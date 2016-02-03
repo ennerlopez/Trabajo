@@ -1,0 +1,79 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelEstilo.ModelEstilo
+
+@{
+    ViewBag.Title = "AgregarOperaciones";
+}
+<script type="text/javascript" src="@Url.Content("~/Scripts/Estilo/AgregaOperaciones.js")"></script>
+
+<fieldset>
+    <legend>Estilos</legend>
+      <br/>
+    <table class="chooseLista colorBlanco Negrita">
+        <tr style="display: none;">
+            <td>codigo </td>
+            <td><p id="codigoEstilo">@Html.DisplayFor(model => model.codigo)</p></td>
+
+        </tr>
+        <tr>
+            <td>Estilo:</td>
+            <td>  @Html.DisplayFor(model => model.nombre)</td>
+        <td>Comentario:</td>
+            <td>   @Html.DisplayFor(model => model.comentario)</td>
+        </tr>
+        
+    </table>
+  
+    
+       
+    <br/>
+    <legend>Operaciones</legend>
+      <br/>
+    
+    <table class="chooseLista">
+        <tr>
+            <td>
+                <div id="box1Group">
+                    Búsqueda: <input type="text" name="filter" /><button type="button" name="clear">X</button><br />
+                    @Html.ListBox("view", new SelectList(Model.listaTodasLasOperaciones, "value", "text"), new { style = "height:300px;width:300px;" })
+                    <br/>
+                    <span class="countLabel"></span>
+                    <select name="storage" class="storageBox"></select>
+                </div>
+            </td>
+            <td>
+                <button id="to2" type="button"> > </button>
+                <button disabled="disabled" id="allTo2" type="button"> >> </button>
+                <button disabled="disabled" id="allTo1" type="button"> << </button>
+                <button id="to1" type="button"> < </button>
+            </td>
+            <td>
+                <div id="box2Group">
+                    Búsqueda: <input type="text" name="filter" /><button type="button" name="clear">X</button><br />
+                    <!--   <select name="view" multiple="multiple" style="height:300px;width:300px;"></select>-->
+                    @Html.ListBox("view", new SelectList(Model.listaOperacionesPorEstilo, "value", "text"), new { style = "height:300px;width:300px;" })
+                    <br />
+                    <span class="countLabel"></span>
+                    <select name="storage" class="storageBox"></select>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+     <br/>
+    <button id="EnviarOperacionesEstilo" value="Enviar">Guardar</button>
+    
+    
+    
+    
+    
+
+</fieldset>
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

@@ -1,0 +1,33 @@
+.countLabel 
+{
+    color: #FFFFFF;
+    
+}
+
+.storageBox 
+{
+    display:none;
+}
+
+.copiedOption
+{
+    background-color: #FFD700;
+}
+
+.pretty_select {
+    background: #FFFAFA;
+      border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
+    -moz-border-radius: 4px 4px 4px 4px;
+}
+
+#box1Group {
+    
+    color: #FFFFFF;
+}
+
+#box2Group {
+    color: #FFFFFF;
+    
+}
+

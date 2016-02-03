@@ -1,0 +1,76 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelCliente.ModelCliente
+
+@{
+    ViewBag.Title = "Cliente";
+}
+
+
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Cliente/Tallas.js")"></script>
+
+
+
+
+  
+
+  
+    <div class="display-field">
+     <p id="CodigoCliente" style="display: none">   @Html.DisplayFor(model => model.codigo) </p>
+    </div>
+    
+
+ 
+    
+<table class="chooseLista colorBlanco Negrita">
+      <tr>
+                <td class="colorAmarillo" colspan="2">Datos</td>
+            </tr>
+        <tr>
+            <td colspan="5">Nombre: @Html.DisplayFor(model => model.nombre)</td>
+        </tr>
+    <tr>
+                <td class="colorAmarillo" colspan="5">Talla</td>
+            </tr>
+    <tr>
+        <td> @Html.DropDownListFor(model => model.tallasCuello, new SelectList(Model.tallasCuello, "value", "text"), "Cuello", new { @class = "combobox" })</td>
+        <td> @Html.DropDownListFor(model => model.tallasManga,new SelectList(Model.tallasManga,"value","text"),"Manga")</td>
+        <td> @Html.DropDownListFor(model => model.tallasLetra,new SelectList(Model.tallasLetra,"value","text"),"Letra")</td>
+        <td><button id="AgregarTallaCliente" >Agregar</button></td>
+        <td><button id="EditarTallaCliente" >Editar</button></td>
+    </tr>
+</table>
+    
+    <br/>
+    
+    <table id="TallasPorCliente" class="tablaAjax">
+        <thead>
+            <tr>
+                <th>Cuello</th>
+                <th>Manga</th>
+                <th>Letra</th>
+                <th>Opcion</th>    
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var talla in Model.listaTallas){
+                <tr>
+                    <td>@talla.tallaCuello</td>
+                    <td>@talla.tallaManga</td> 
+                    <td>@talla.tallaLetra</td>   
+                    <td><a class="elimina">Eliminar</a></td>     
+                </tr>
+
+            }
+        </tbody>
+        <tfoot>
+
+    </table>
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

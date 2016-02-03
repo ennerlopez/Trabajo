@@ -1,0 +1,36 @@
+﻿@model MVC3AplicacionPrueba.Models.ModuloEntidad
+
+@{
+    ViewBag.Title = "Modulo";
+}
+
+
+@using (Html.BeginForm("Edit", "ModuloEntidad", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+      <table class="chooseLista colorBlanco Negrita">
+          <tr>
+              <td class="colorAmarillo" colspan="2">Editar Modulo</td>
+          </tr>
+          <tr>
+              <td>Nombre:</td>
+              <td>
+                  @Html.TextBoxFor(model => model.descripcion, new { @class = "validate[required,custom[onlyLetterSp]]" })
+              </td>
+              <td> <input type="submit" value="Guardar" />  </td>
+          </tr>
+          
+        </table>
+
+    </fieldset>
+}
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

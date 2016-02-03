@@ -1,0 +1,49 @@
+﻿@model MVC3AplicacionPrueba.Models.Operacione
+
+@{
+    ViewBag.Title = "Detalle de Operaciones";
+}
+
+    
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="3">Detalle Operaciones</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td> @Html.DisplayFor(model => model.nombreOperacion)</td>
+        </tr>
+        <tr>
+            <td>Grado:</td>
+            <td>  @Html.DisplayFor(model => model.Grado.descripcionGrado)</td>
+        </tr>
+        <tr>
+            <td>Duracion:</td>
+            <td>  @Html.DisplayFor(model => model.duracionEnSegundosOperacion)</td>
+        </tr>
+        <tr>
+            <td>Tiempo Bulto:</td>
+            <td>  @Html.DisplayFor(model => model.tiempoManejoBultoOperacion)</td>
+        </tr>
+        <tr>
+            <td>Valor Pieza:</td>
+            <td>  @Html.DisplayFor(model => model.valorPiezaOperacion)</td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>@Html.ActionLink("Editar", "Edit", new { id=Model.codigoOperacion },new{@class="btn btn-primary NoSubrayado"})</td>
+        </tr>
+   
+    </table>
+    
+    
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

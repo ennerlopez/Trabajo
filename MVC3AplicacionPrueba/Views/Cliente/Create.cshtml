@@ -1,0 +1,50 @@
+﻿@model MVC3AplicacionPrueba.Models.Cliente
+
+@{
+    ViewBag.Title = "Cliente";
+}
+
+@using (Html.BeginForm("Create", "Cliente", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+
+
+    <table class="chooseLista colorBlanco Negrita">
+                <tr>
+                    <td class="colorAmarillo" colspan="2">Creación De Departamento </td>
+                </tr>
+                <tr>
+                    <td>Cliente:</td>
+                    <td>@Html.TextBoxFor(model => model.nombreCliente, new {@class = "validate[required]"})</td>
+                </tr>
+            
+                <tr>
+                     <td>Direccion:</td>
+                     <td> @Html.TextBoxFor(model => model.direccionCliente, new {@class = "validate[required]"})</td>
+                </tr>
+            
+                <tr>
+                    <td>Telefono:</td>
+                     <td> @Html.TextBoxFor(model => model.telefonoCliente, new {@class = "validate[required]"})</td>
+                </tr>
+            
+                         <tr>
+                             <td></td>
+                             <td>  <input type="submit" value="Guardar" /></td>
+                        </tr>
+            
+
+        </table>
+            
+        
+}
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>
+
+ 

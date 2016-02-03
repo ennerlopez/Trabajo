@@ -1,0 +1,96 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelHojaBultos.ModelResumenHojaBultos
+
+@{
+    ViewBag.Title = "Confirma Hoja Bultos";
+}
+
+<script src="@Url.Content("~/Scripts/CorteOrdenes/ui/jquery.ui.core.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CorteOrdenes/ui/jquery.ui.widget.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CorteOrdenes/ui/jquery.ui.datepicker.js")" type="text/javascript"></script>
+ 
+<script type="text/javascript" src="@Url.Content("~/Scripts/Fecha/jquery.ui.datepicker-es.js")"></script>	
+
+<script src="@Url.Content("~/Scripts/HojaBultos/HojaBultos.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "formularioConfirmarHojaBulto" }))
+{
+
+
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td>Codigo</td> <td>  @Html.TextBoxFor(model => model.codigoOrden, new {@class = "validate[required]",@readonly="true"})
+                
+                            </td>
+                
+            <td>Cliente</td>    <td> @Html.TextBoxFor(model => model.cliente, new {@class = "validate[required]",@readonly="true"})
+                                 </td>
+             
+            <td>Fecha</td> <td>  @Html.TextBoxFor(model => model.fechaCortado, new { @class = "validate[required]", @readonly = "true" })</td>
+                
+        </tr>
+       
+    </table>
+
+    <br/>
+
+    <table class="tablaAjax">
+        <thead>
+            <tr>
+                <th>Serie</th>
+                <th>Sección</th>
+                <th>Nro Bulto</th>
+                <th>Capa</th>
+                <th>Talla</th>
+                <th>Cantidad</th>    
+                <th>Cantidad Real</th> 
+            </tr>
+        </thead>
+        <tbody>
+         
+            @foreach (var detalle in Model.listaDetalle)
+            {
+                <tr>
+                     <td>@detalle.serie</td>   
+                    <td>@detalle.nroSeccion</td>   
+                    <td> @detalle.numeroBulto</td> 
+          
+                    <td>@detalle.capaCorte</td>  
+                 
+                    <td>
+                        @detalle.tallaCompleta
+                    </td>
+                    <td>
+                        @detalle.cantidaHistorico 
+                    </td>
+                   
+                    <td>
+                        @detalle.cantidad
+                    </td>
+                </tr>
+            } 
+        </tbody>
+        <tfoot>
+             <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>    
+        </tfoot>
+
+    </table>
+    <br/>
+    <p>
+        <button id="GuardarOrden" type="submit">Guardar</button>
+    </p>
+}
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("BusquedaHojaBulto")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

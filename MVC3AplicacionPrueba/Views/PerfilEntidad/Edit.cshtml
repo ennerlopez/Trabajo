@@ -1,0 +1,40 @@
+﻿@model MVC3AplicacionPrueba.Models.PerfilEntidad
+
+@{
+    ViewBag.Title = "Perfil";
+}
+
+
+
+@using (Html.BeginForm("Edit", "PerfilEntidad", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+
+
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Editar Perfil</td>
+        </tr>
+        <tr>
+            <td>
+                 Nombre:
+            </td>
+            <td>  @Html.TextBoxFor(model => model.nombrePerfil, new {@class = "validate[required,custom[onlyLetterSp]]"})</td>
+        </tr>
+        <tr>
+            <td>Descripción</td>
+            <td>  @Html.TextAreaFor(model => model.descripcionPerfil)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="Guardar" />  </td>
+        </tr>
+    </table>
+}
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

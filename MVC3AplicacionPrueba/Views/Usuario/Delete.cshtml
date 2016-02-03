@@ -1,0 +1,42 @@
+﻿@model MVC3AplicacionPrueba.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm()) {
+
+    <fieldset>
+        <table class="chooseLista colorBlanco Negrita">
+            <tr>
+                <td colspan="2" class="colorAmarillo">Eliminar Usuario</td>
+            </tr>
+            <tr>
+                <td colspan="2">¿Esta seguro que Desea Eliminar Esto? </td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td> @Html.DisplayFor(model => model.nombreUsuario)</td>
+            </tr>
+            <tr>
+                <td>Perfil:</td>
+                <td> @Html.DisplayFor(model => model.PerfilEntidad.nombrePerfil)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <input type="submit" value="Eliminar" /></td>
+            </tr>
+        </table>
+    </fieldset>
+    <br/>
+
+   <br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>
+
+}

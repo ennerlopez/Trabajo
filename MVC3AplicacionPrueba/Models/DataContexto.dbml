@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Exiid" Class="DataContextoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=Exiid;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ExiidConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Menus" Member="VistaMenus">
+    <Type Name="VistaMenus">
+      <Column Name="codigoMenu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcionMenu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Modulos" Member="VistaModulos">
+    <Type Name="VistaModulo">
+      <Column Name="codigoModulo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Modulo" Member="ModuloEntidads">
+    <Type Name="ModuloEntidad">
+      <Column Name="codigoModulo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="ModuloEntidad_MenuEntidad" Member="MenuEntidads" ThisKey="codigoModulo" OtherKey="codigoModulo" Type="MenuEntidad" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Perfil" Member="PerfilEntidads">
+    <Type Name="PerfilEntidad">
+      <Column Name="codigoPerfil" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombrePerfil" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="descripcionPerfil" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="PerfilEntidad_PerfilFuncion" Member="PerfilFuncions" ThisKey="codigoPerfil" OtherKey="codigoPerfil" Type="PerfilFuncion" />
+      <Association Name="PerfilEntidad_Usuario" Member="Usuarios" ThisKey="codigoPerfil" OtherKey="codigoPerfil" Type="Usuario" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PerfilFuncion" Member="PerfilFuncions">
+    <Type Name="PerfilFuncion">
+      <Column Name="codigoPerfil" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigoFuncion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="PerfilEntidad_PerfilFuncion" Member="PerfilEntidad" ThisKey="codigoPerfil" OtherKey="codigoPerfil" Type="PerfilEntidad" IsForeignKey="true" />
+      <Association Name="FuncionEntidad_PerfilFuncion" Member="FuncionEntidad" ThisKey="codigoFuncion" OtherKey="codigoFuncion" Type="FuncionEntidad" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VistaPerfilFuncion" Member="VistaPerfilFuncions">
+    <Type Name="VistaPerfilFuncion">
+      <Column Name="codigoFuncion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcionFuncion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoPerfil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.siNo" Member="siNos">
+    <Type Name="siNo">
+      <Column Name="codigo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Association Name="siNo_Usuario" Member="Usuarios" ThisKey="codigo" OtherKey="cambioPasswordUsuario" Type="Usuario" />
+      <Association Name="siNo_Corte" Member="Cortes" ThisKey="codigo" OtherKey="pinadoCorte" Type="Corte" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Funciones" Member="VistaFunciones">
+    <Type Name="VistaFuncione">
+      <Column Name="codigoFuncion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="descripcionFuncion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="accionFuncion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoMenu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="codigoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accionContralador" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DepartamentoOperaciones" Member="DepartamentoOperaciones">
+    <Type Name="DepartamentoOperacione">
+      <Column Name="codigoDepartamento" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigoOperacion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Departamento_DepartamentoOperacione" Member="Departamento" ThisKey="codigoDepartamento" OtherKey="codigoDepartamento" Type="Departamento" IsForeignKey="true" />
+      <Association Name="Operacione_DepartamentoOperacione" Member="Operacione" ThisKey="codigoOperacion" OtherKey="codigoOperacion" Type="Operacione" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LineasProduccion" Member="LineasProduccions">
+    <Type Name="LineasProduccion">
+      <Column Name="codigoLinea" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreLinea" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="comentarioLinea" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="LineasProduccion_Departamento" Member="Departamentos" ThisKey="codigoLinea" OtherKey="codigoLinea" Type="Departamento" />
+      <Association Name="LineasProduccion_HojaBloque" Member="HojaBloques" ThisKey="codigoLinea" OtherKey="codigoLinea" Type="HojaBloque" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Estilos" Member="Estilos">
+    <Type Name="Estilo">
+      <Column Name="codigoEstilo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreEstilo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="comentario" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Estilo_EstiloOperacione" Member="EstiloOperaciones" ThisKey="codigoEstilo" OtherKey="codigoEstilo" Type="EstiloOperacione" />
+      <Association Name="Estilo_Corte" Member="Cortes" ThisKey="codigoEstilo" OtherKey="codigoEstilo" Type="Corte" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EstiloOperaciones" Member="EstiloOperaciones">
+    <Type Name="EstiloOperacione">
+      <Column Name="codigoEstilo" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigoOperacion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Estilo_EstiloOperacione" Member="Estilo" ThisKey="codigoEstilo" OtherKey="codigoEstilo" Type="Estilo" IsForeignKey="true" />
+      <Association Name="Operacione_EstiloOperacione" Member="Operacione" ThisKey="codigoOperacion" OtherKey="codigoOperacion" Type="Operacione" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Grado" Member="Grados">
+    <Type Name="Grado">
+      <Column Name="codigoGrado" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcionGrado" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="valorGrado" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Association Name="Grado_Operacione" Member="Operaciones" ThisKey="codigoGrado" OtherKey="codigoGrado" Type="Operacione" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vistaRelacionDepartamentoOperaciones" Member="vistaRelacionDepartamentoOperaciones">
+    <Type Name="vistaRelacionDepartamentoOperacione">
+      <Column Name="codigoDepartamento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreDepartamento" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="codigoOperacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreOperacion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Menu" Member="MenuEntidads">
+    <Type Name="MenuEntidad">
+      <Column Name="codigoMenu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcionMenu" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoModulo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="MenuEntidad_FuncionEntidad" Member="FuncionEntidads" ThisKey="codigoMenu" OtherKey="codigoMenu" Type="FuncionEntidad" />
+      <Association Name="ModuloEntidad_MenuEntidad" Member="ModuloEntidad" ThisKey="codigoModulo" OtherKey="codigoModulo" Type="ModuloEntidad" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Funcion" Member="FuncionEntidads">
+    <Type Name="FuncionEntidad">
+      <Column Name="codigoFuncion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcionFuncion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="accionContralador" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="accionFuncion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoMenu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="FuncionEntidad_PerfilFuncion" Member="PerfilFuncions" ThisKey="codigoFuncion" OtherKey="codigoFuncion" Type="PerfilFuncion" />
+      <Association Name="MenuEntidad_FuncionEntidad" Member="MenuEntidad" ThisKey="codigoMenu" OtherKey="codigoMenu" Type="MenuEntidad" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="codigoUsuario" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="passwordUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cambioPasswordUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoPerfil" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Corte" Member="Cortes" ThisKey="codigoUsuario" OtherKey="codigoUsuario" Type="Corte" />
+      <Association Name="PerfilEntidad_Usuario" Member="PerfilEntidad" ThisKey="codigoPerfil" OtherKey="codigoPerfil" Type="PerfilEntidad" IsForeignKey="true" />
+      <Association Name="siNo_Usuario" Member="siNo" ThisKey="cambioPasswordUsuario" OtherKey="codigo" Type="siNo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cliente" Member="Clientes">
+    <Type Name="Cliente">
+      <Column Name="codigoCliente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreCliente" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="direccionCliente" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="telefonoCliente" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_TallasCliente" Member="TallasClientes" ThisKey="codigoCliente" OtherKey="codigoCliente" Type="TallasCliente" />
+      <Association Name="Cliente_Corte" Member="Cortes" ThisKey="codigoCliente" OtherKey="codigoCliente" Type="Corte" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TallaCuello" Member="TallaCuellos">
+    <Type Name="TallaCuello">
+      <Column Name="codigoCuello" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tallaCuello" Member="tallaCuello1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tallaManga" Member="tallaMangas">
+    <Type Name="tallaManga">
+      <Column Name="codigoManga" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tallaManga" Member="tallaManga1" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tallaLetra" Member="tallaLetras">
+    <Type Name="tallaLetra">
+      <Column Name="codigoLetra" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tallaLetra" Member="tallaLetra1" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VistaRelacionEstiloOperaciones" Member="VistaRelacionEstiloOperaciones">
+    <Type Name="VistaRelacionEstiloOperacione">
+      <Column Name="codigoEstilo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoOperacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreOperacion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CorteDetalle" Member="CorteDetalles">
+    <Type Name="CorteDetalle">
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaCuello" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaManga" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaLetra" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Corte_CorteDetalle" Member="Corte" ThisKey="codigoCorte" OtherKey="codigoCorte" Type="Corte" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TallasCliente" Member="TallasClientes">
+    <Type Name="TallasCliente">
+      <Column Name="codigoCliente" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaCuello" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaManga" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaLetra" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_TallasCliente" Member="Cliente" ThisKey="codigoCliente" OtherKey="codigoCliente" Type="Cliente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Corte" Member="Cortes">
+    <Type Name="Corte">
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigoUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="proyectoCorte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fechaCorte" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="codigoCliente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="custPoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="totalCamisasCorte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoEstilo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="telaCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="pinadoCorte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="consumoTela" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="comentarioCorte" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tieneHojaBulto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fechaCortado" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Corte_CorteDetalle" Member="CorteDetalles" ThisKey="codigoCorte" OtherKey="codigoCorte" Type="CorteDetalle" />
+      <Association Name="Corte_HojaBulto" Member="HojaBultos" ThisKey="codigoCorte" OtherKey="codigoCorte" Type="HojaBulto" />
+      <Association Name="Cliente_Corte" Member="Cliente" ThisKey="codigoCliente" OtherKey="codigoCliente" Type="Cliente" IsForeignKey="true" />
+      <Association Name="Estilo_Corte" Member="Estilo" ThisKey="codigoEstilo" OtherKey="codigoEstilo" Type="Estilo" IsForeignKey="true" />
+      <Association Name="siNo_Corte" Member="siNo" ThisKey="pinadoCorte" OtherKey="codigo" Type="siNo" IsForeignKey="true" />
+      <Association Name="Usuario_Corte" Member="Usuario" ThisKey="codigoUsuario" OtherKey="codigoUsuario" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Departamentos" Member="Departamentos">
+    <Type Name="Departamento">
+      <Column Name="codigoDepartamento" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreDepartamento" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="comentarioDepartamento" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoLinea" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoGrupo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Departamento_DepartamentoOperacione" Member="DepartamentoOperaciones" ThisKey="codigoDepartamento" OtherKey="codigoDepartamento" Type="DepartamentoOperacione" />
+      <Association Name="LineasProduccion_Departamento" Member="LineasProduccion" ThisKey="codigoLinea" OtherKey="codigoLinea" Type="LineasProduccion" IsForeignKey="true" />
+      <Association Name="Grupo_Departamento" Member="Grupo" ThisKey="codigoGrupo" OtherKey="codigoGrupo" Type="Grupo" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Grupo" Member="Grupos">
+    <Type Name="Grupo">
+      <Column Name="codigoGrupo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreGrupo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="descripcionGrupo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Grupo_Departamento" Member="Departamentos" ThisKey="codigoGrupo" OtherKey="codigoGrupo" Type="Departamento" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Operaciones" Member="Operaciones">
+    <Type Name="Operacione">
+      <Column Name="codigoOperacion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="nombreOperacion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="codigoGrado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="duracionEnSegundosOperacion" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="tiempoManejoBultoOperacion" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="valorPiezaOperacion" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Association Name="Operacione_DepartamentoOperacione" Member="DepartamentoOperaciones" ThisKey="codigoOperacion" OtherKey="codigoOperacion" Type="DepartamentoOperacione" />
+      <Association Name="Operacione_EstiloOperacione" Member="EstiloOperaciones" ThisKey="codigoOperacion" OtherKey="codigoOperacion" Type="EstiloOperacione" />
+      <Association Name="Grado_Operacione" Member="Grado" ThisKey="codigoGrado" OtherKey="codigoGrado" Type="Grado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Capas_vw" Member="Capas_vws">
+    <Type Name="Capas_vw">
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="nroSeccion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="numeroBulto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="A" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="B" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="C" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="D" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="E" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="F" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Login_vw" Member="Login_vws">
+    <Type Name="Login_vw">
+      <Column Name="accionContralador" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="accionFuncion" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="nombreUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="passwordUsuario" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cupon" Member="Cupons">
+    <Type Name="Cupon">
+      <Column Name="nroCupon" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadCortada" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreEstilo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreOperacion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tiempoCupon" Type="System.TimeSpan" DbType="Time NOT NULL" CanBeNull="false" />
+      <Column Name="valorCupon" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreDepartamento" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreGrupo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="bulto" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="serie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cupones_vw" Member="Cupones_vws">
+    <Type Name="Cupones_vw">
+      <Column Name="bulto" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadCortada" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoEstilo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreEstilo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="comentario" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="codigoOperacion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombreOperacion" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="codigoGrado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="duracionEnSegundosOperacion" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="tiempoManejoBultoOperacion" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="valorPiezaOperacion" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="tiempoCupon" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Column Name="valorCupon" Type="System.Decimal" DbType="Decimal(29,4)" CanBeNull="true" />
+      <Column Name="nombreDepartamento" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="nombreGrupo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="serie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HojaBultos" Member="HojaBultos">
+    <Type Name="HojaBulto">
+      <Column Name="numeroBulto" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nroSeccion" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="capaCorte" Type="System.Char" DbType="Char(1) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadCortada" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadRestante" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Corte_HojaBulto" Member="Corte" ThisKey="codigoCorte" OtherKey="codigoCorte" Type="Corte" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CortesAPlanificar_vw" Member="CortesAPlanificar_vws">
+    <Type Name="CortesAPlanificar_vw">
+      <Column Name="codigo" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CortesDisponiblesParaPlanificar_vw" Member="CortesDisponiblesParaPlanificar_vws">
+    <Type Name="CortesDisponiblesParaPlanificar_vw">
+      <Column Name="numeroBulto" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoCorte" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="nroSeccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="capaCorte" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="cantidadRestante" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="serie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HojaBloques" Member="HojaBloques">
+    <Type Name="HojaBloque">
+      <Column Name="bloque" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="seccion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="corte" Type="System.String" DbType="NVarChar(15) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="capaBulto" Type="System.String" DbType="NVarChar(8) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="cantidad" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tallaCompleta" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="color" Type="System.String" DbType="NVarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="semana" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="year" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="serie" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="codigoLinea" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="LineasProduccion_HojaBloque" Member="LineasProduccion" ThisKey="codigoLinea" OtherKey="codigoLinea" Type="LineasProduccion" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

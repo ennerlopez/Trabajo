@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Departamento>
+
+@{
+    ViewBag.Title = "Departamentos";
+}
+
+
+<p>
+    @Html.ActionLink("+ Nuevo", "Create", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+</p>
+<br/>
+<table class="tabla">
+    <thead>
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Comentario
+        </th>
+         <th>
+            Grupo
+        </th>
+        <th>
+            Linea
+        </th>
+        <th class="AnchuraBotonesEdicion"></th>
+         <th class="AnchuraBotonesEdicion"></th>
+        <th class="AnchuraBotonesEdicion"></th>
+        
+    </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreDepartamento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.comentarioDepartamento)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Grupo.nombreGrupo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LineasProduccion.nombreLinea)
+                </td>
+            
+                <td>
+                    <a class="BotonEdit" href='@Url.Action("Edit", new { id = item.codigoDepartamento })'>
+                        <img alt="" src='@Url.Content("~/Content/BotonesTabla/Edit.png")' />
+                    </a>  
+                
+                </td>
+               
+                
+                <td>
+                    <a class="BotonDelete" href="@Url.Action("Delete", new { id = item.codigoDepartamento })">
+                        <img alt="" src="@Url.Content("~/Content/BotonesTabla/Delete.png")" /> 
+                    </a>
+            
+                </td>
+                 <td>
+                <a class="BotonTamano" href="@Url.Action("agregarOperaciones", new { id = item.codigoDepartamento })">
+                    <img alt="" src="@Url.Content("~/Content/BotonesTabla/Operaciones.png")" /> 
+                </a>
+            
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+</table>

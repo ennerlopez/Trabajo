@@ -1,0 +1,30 @@
+﻿@model MVC3AplicacionPrueba.Reportes.Entidades.CuponModel
+
+@{
+    ViewBag.Title = "Cupones";
+}
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/Cupones/GenerarCupones.js")"></script>
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "formularioGeneracionCupones" }))
+{   
+   
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="3">Cupones </td>
+        </tr>
+        <tr>
+            <td>Código Orden:</td>
+            <td><input type="text" id="codigoOrden" class="validate[required]" /></td>
+            <td></td>
+        </tr>
+       
+        <tr>
+            <td></td>
+            <td>  <button type="submit">Generar</button> <button type="button" id="VerPdfCupones">Reporte</button> <button type="button" id="eliminarCupones">Eliminar</button> </td>
+            <td></td> 
+        </tr>
+    
+        </table>
+
+}
+

@@ -1,0 +1,81 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelDepartamentos.ModelDepartamentos
+
+@{
+    ViewBag.Title = "agregarOperaciones";
+}
+
+  <script type="text/javascript" src="@Url.Content("~/Scripts/Departamentos/AgregarOperaciones.js")"></script>
+ 
+
+<fieldset>
+    <legend>Departamento</legend>
+    <br/>
+    <p id="codigoDepartamento" style="display: none;">  @Html.DisplayFor(model => model.codigo)</p>
+    
+   
+   
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td>Nombre:</td>
+            <td> @Html.DisplayFor(model => model.nombre)</td>
+            <td>Comentario:</td>
+            <td> @Html.DisplayFor(model => model.nombre)</td>
+            <td>Linea:</td>
+             <td>  @Html.DisplayFor(model => model.nombreLinea)</td>
+        </tr>
+     
+    </table>
+   
+    
+    <br/>
+     <legend>Operaciones</legend>
+     <br/>
+    <table class="chooseLista">
+        <tr>
+            <td>
+                <div id="box1Group">
+                    Búsqueda: <input type="text" name="filter" /><button type="button" name="clear">X</button><br />
+                    @Html.ListBox("view", new SelectList(Model.listaTodasOperaciones, "value", "text"), new { @class = "pretty_select1", style = "height:300px;width:300px;" })
+                    <br/>
+                    <span class="countLabel"></span>
+                    <select name="storage" class="storageBox"></select>
+                </div>
+            </td>
+            <td>
+                <button id="to2" type="button"> > </button>
+                <button disabled="disabled" id="allTo2" type="button"> >> </button>
+                <button disabled="disabled" id="allTo1" type="button"> << </button>
+                <button id="to1" type="button"> < </button>
+            </td>
+            <td>
+                <div id="box2Group">
+                    Búsqueda: <input type="text" name="filter" /><button type="button" name="clear">X</button><br />
+                    <!--   <select name="view" multiple="multiple" style="height:300px;width:300px;"></select>-->
+                    @Html.ListBox("view", new SelectList(Model.listaOperacionesPorDepartamento, "value", "text"), new { @class = "pretty_select2", style = "height:300px;width:300px;" })
+                    <br />
+                    <span class="countLabel"></span>
+                    <select name="storage" class="storageBox"></select>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+     <br/>
+    <button id="EnviarOperacionesDepartamento" value="Guardar">Guardar</button>
+    
+    
+    
+    
+    
+    
+
+</fieldset>
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

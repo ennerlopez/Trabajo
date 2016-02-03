@@ -1,0 +1,57 @@
+﻿
+@model MVC3AplicacionPrueba.Models.Modelado.ModelDepartamentos.ModelDepartamentos
+
+@{
+    ViewBag.Title = "Departamento";
+}
+
+
+@using (Html.BeginForm("Create", "Departamentos", FormMethod.Post, new { @class = "validacionFormularioGeneral" }))
+{
+       
+        
+        
+        <table class="chooseLista colorBlanco Negrita">
+              <tr>
+               <td class="colorAmarillo" colspan="2">Creación De Departamento </td>
+           </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td>@Html.TextBoxFor(model => model.nombre, new { @class = "validate[required]" })</td>
+            </tr>
+            
+            <tr>
+                <td>Grupos:</td>
+                <td> @Html.DropDownListFor(model => model.listaGrupos, new SelectList(Model.listaGrupos, "value", "text"), "Seleccione Grupo", new { @class = "validate[required]" })</td>
+            </tr>
+            
+
+            <tr>
+                <td>Linea:</td>
+                <td> @Html.DropDownListFor(model => model.listaLineasProduccion, new SelectList(Model.listaLineasProduccion, "value", "text"), "Seleccione una Linea", new { @class = "validate[required]" })</td>
+            </tr>
+            
+            <tr>
+                <td>Comentario:</td>
+                <td>  @Html.TextAreaFor(model => model.comentario)</td>
+            </tr>
+            
+             <tr>
+                 <td></td>
+                 <td>  <input type="submit" value="Guardar" /></td>
+            </tr>
+            
+
+        </table>
+        
+
+}
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

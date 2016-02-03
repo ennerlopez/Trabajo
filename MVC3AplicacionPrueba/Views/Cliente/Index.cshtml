@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MVC3AplicacionPrueba.Models.Cliente>
+
+@{
+    ViewBag.Title = "Cliente";
+}
+
+
+<p>
+       @Html.ActionLink("+ Nuevo", "Create", null, new { @class = "BotonNuevo btn btn-primary NoSubrayado" })
+   
+          
+
+</p>
+<br/>
+<table class="tabla">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Dirección
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th class="AnchuraBotonesEdicion"></th>
+            <th class="AnchuraBotonesEdicion"></th>
+            <th class="AnchuraBotonesEdicion"></th>
+            <th class="AnchuraBotonesEdicion"></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccionCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefonoCliente)
+        </td>
+        
+        <td>
+            <a class="BotonEdit" href='@Url.Action("Edit",new{id=item.codigoCliente})'>
+                <img alt="" src='@Url.Content("~/Content/BotonesTabla/Edit.png")' />
+            </a>  
+        </td>
+         <td>
+            <a class="BotonDetails" href="@Url.Action("Details",new{id=item.codigoCliente})">
+                <img alt="" src="@Url.Content("~/Content/BotonesTabla/find.png")" /> 
+            </a>
+            
+        </td>
+        
+        
+        <td>
+            <a class="BotonDelete" href="@Url.Action("Delete",new{id=item.codigoCliente})">
+                <img alt="" src="@Url.Content("~/Content/BotonesTabla/Delete.png")" /> 
+            </a>
+            
+        </td>
+        
+        <td>
+            <a class="BotonTallas" href="@Url.Action("ingresarTallas",new{id=item.codigoCliente})">
+                <img alt="" src="@Url.Content("~/Content/BotonesTabla/Tallas.png")" /> 
+            </a>
+            
+        </td>
+
+       
+      
+        
+    </tr>
+}
+</tbody>
+<tfoot>
+</table>

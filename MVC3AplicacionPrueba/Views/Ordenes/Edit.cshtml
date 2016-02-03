@@ -1,0 +1,136 @@
+﻿@model MVC3AplicacionPrueba.Models.Modelado.ModelOrdenes.ModelOrden
+
+@{
+    ViewBag.Title = "Orden";
+}
+
+<script src="@Url.Content("~/Scripts/CorteOrdenes/ui/jquery.ui.core.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CorteOrdenes/ui/jquery.ui.widget.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CorteOrdenes/ui/jquery.ui.datepicker.js")" type="text/javascript"></script>
+ 
+<script type="text/javascript" src="@Url.Content("~/Scripts/Fecha/jquery.ui.datepicker-es.js")"></script>	
+
+<script src="@Url.Content("~/Scripts/CorteOrdenes/DatePicker.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/CorteOrdenes/EditarOrden.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { id = "formularioOrdenes" }))
+{
+
+
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td>Codigo</td> <td>  @Html.TextBoxFor(model => model.codigo, new {@class = "validate[required]",@readonly="true"})
+                
+                            </td>
+                
+            <td>Proyecto</td>    <td> @Html.TextBoxFor(model => model.proyecto, new {@class = "validate[required]"})
+                                 </td>
+             
+            <td>Fecha</td> <td>  @Html.TextBoxFor(model => model.fechaCorte, new { @class = "validate[required]", @readonly = "true" })</td>
+                
+        </tr>
+            
+        <tr>
+            <td>Cliente</td> <td>   @Html.DropDownListFor(model => model.codigoCliente, new SelectList(Model.listaCliente, "value", "text"), "Seleccione El Cliente", new { @class = "validate[required]", @disabled = "disabled" })  </td>
+                
+            <td>Cust PO</td>    <td>  @Html.TextBoxFor(model => model.custPoCorte, new {@class = "validate[required]"})
+                                </td>
+             
+            <td>Cantidad</td> <td>   @Html.EditorFor(model => model.cantida)
+                              </td>
+                
+        </tr>
+            
+        <tr>
+            <td>Estilo</td> <td>  @Html.DropDownListFor(model => model.codigoEstilo, new SelectList(Model.listaEstilos, "value", "text"), "Seleccione El Estilo", new {@class = "validate[required]"})  </td>
+                
+            <td>Tela</td>    <td> @Html.TextBoxFor(model => model.tela, new {@class = "validate[required]"})
+                             </td>
+             
+            <td>Piñado</td> <td>   @Html.EditorFor(model => model.pinado)
+                            </td>
+                
+        </tr>
+        <tr>
+            <td>Consumo Tela</td>
+            <td>  @Html.TextBoxFor(model => model.consumoTela, new { @class = "validate[required,custom[number]]" })
+            </td>
+            <td>Comentario</td>
+            <td colspan="4">  @Html.TextAreaFor(model => model.comentario)
+            </td>
+        </tr>
+
+    </table>
+
+
+    <div class="display-label">Detalle</div>
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td>
+                Talla
+            </td>
+            <td>
+                <select id="TallaDeClienteOrden">
+                    <option selected="selected">Selecciona una Talla</option>
+                    
+                </select>
+                    
+            </td>
+            <td>
+                <input id="cantidaDetalleOrden" type="text" class="validate[custom[integer]]"/>
+               
+            </td>
+            <td><button type="button" id="AgregarTallaCliente" >Agregar</button></td>
+            <td><button type="button" id="EditarTallaCliente" >Editar</button>    </td>
+        </tr>
+    </table>
+
+    <br/>
+
+    <table id="detalleOrdenCorte" class="tablaAjax">
+        <thead>
+            <tr>
+                <th>Cuello</th>
+                <th>Manga</th>
+                <th>Letra</th>
+                <th>Cantidad</th>
+                <th>Opción</th>    
+
+            </tr>
+        </thead>
+        <tbody>
+         
+            @foreach (var detalle in Model.listaDetalleOrden)
+            {
+                <tr>
+                    <td>@detalle.tallaCuello</td>
+                    <td>@detalle.tallaManga</td>
+                    <td>@detalle.tallaLetra</td>
+                    <td>@detalle.cantidad</td>
+                    <td><a class='elimina'>Eliminar</a></td>
+                </tr>
+            } 
+        </tbody>
+        <tfoot>
+                <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th ></th>    
+        </tfoot>
+
+    </table>
+    <br/>
+    <p>
+        <button id="GuardarOrden" type="submit">Guardar</button>
+    </p>
+}
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

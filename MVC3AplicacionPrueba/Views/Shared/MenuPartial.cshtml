@@ -1,0 +1,86 @@
+﻿@using MVC3AplicacionPrueba.Models
+@if (Request.IsAuthenticated)
+{
+
+    int n = 0;
+    string nombre = "hierarchybreadcrumb";
+    string idUsuario = "0";
+    if (Request.Cookies["idUsuario"] != null)
+    {
+
+        if (Request.Cookies["idUsuario"]["codigo"] != null)
+        {
+            idUsuario = Request.Cookies["idUsuario"]["codigo"];
+        }
+    }
+   
+    <p id="CookieUsuario" style="display: none">@idUsuario.ToString()</p>
+<ul id="mega-menu" class="mega-menu">
+    
+       
+         @{
+    List<VistaModulo> listaModulos = Data.obtenerListaModulos(Convert.ToInt16(idUsuario));
+                        foreach (var item in listaModulos)
+                        {
+
+                            nombre += n;
+
+                            
+                                
+                            <li> <a href="#" > @item.descripcion </a>
+                             
+                               
+                                <ul>
+                  
+                  
+                                
+                                        @{
+
+                                            List<VistaMenus> obtenerLista = Data.obtenerLista(item.codigoModulo,item.codigoUsuario);
+                                        }
+          
+                                        @foreach (var d in obtenerLista)
+                                        {
+                                            <li><a href="#">@d.descripcionMenu</a>
+                                                <ul>
+                                                    @{
+                                                        List<VistaFuncione> lista = Data.obtenerListaFunciones(d.codigoMenu,d.codigoUsuario);
+                                                    }
+                            
+                                                    @foreach (var fun in lista)
+                                                    {
+
+                                                        <li>
+                                   
+                                                            @Html.ActionLink(fun.descripcionFuncion, fun.accionFuncion, fun.accionContralador)
+                                            
+                                
+                                                        </li>
+                                                    }
+                        
+                     
+                                                </ul>           
+
+                                            </li>
+                                        }
+
+                                       
+                                </ul>
+                            
+                            </li>
+                       
+
+
+        
+                        nombre = "hierarchybreadcrumb";
+                        n++;
+     
+
+
+                        }
+        
+          }
+        </ul>
+
+
+}

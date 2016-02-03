@@ -1,0 +1,31 @@
+﻿@model MVC3AplicacionPrueba.Models.ModuloEntidad
+
+@{
+    ViewBag.Title = "Modulo";
+}
+
+
+<fieldset>
+  
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="3">Detalle Modulo</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>  @Html.DisplayFor(model => model.descripcion)</td>
+            <td> @Html.ActionLink("Editar", "Edit", new { id=Model.codigoModulo },new{@class="btn btn-primary NoSubrayado"})</td>
+        </tr>
+        
+    </table>
+
+</fieldset>
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>

@@ -1,0 +1,35 @@
+﻿@model MVC3AplicacionPrueba.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Usuario</legend>
+
+    <div class="display-label">nombreUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombreUsuario)
+    </div>
+
+    <div class="display-label">passwordUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.passwordUsuario)
+    </div>
+
+    <div class="display-label">cambioPasswordUsuario</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.siNo.descripcion)
+    </div>
+
+    <div class="display-label">codigoPerfil</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PerfilEntidad.nombrePerfil)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.codigoUsuario }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

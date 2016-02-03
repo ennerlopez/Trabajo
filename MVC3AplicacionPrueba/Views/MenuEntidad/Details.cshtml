@@ -1,0 +1,34 @@
+﻿@model MVC3AplicacionPrueba.Models.MenuEntidad
+
+@{
+    ViewBag.Title = "Detalle";
+}
+
+
+
+    <table class="chooseLista colorBlanco Negrita">
+        <tr>
+            <td class="colorAmarillo" colspan="2">Detalle Menu</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>  @Html.DisplayFor(model => model.descripcionMenu)</td>
+        </tr>
+        <tr>
+            <td>Modulo:</td>
+            <td>@Html.DisplayFor(model => model.ModuloEntidad.descripcion)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Html.ActionLink("Editar", "Edit", new { id=Model.codigoMenu },new{@class="btn btn-primary NoSubrayado"})</td>
+        </tr>
+    </table>
+
+<br/>
+<div style="height: 48px;" >
+    
+    <a class="BotonBack" href="@Url.Action("Index")">
+       <img alt="" src="@Url.Content("~/Content/BotonesTabla/back.png")" /> 
+    </a>
+
+</div>
