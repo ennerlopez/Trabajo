@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
 using MVC3AplicacionPrueba.Models;
 using MVC3AplicacionPrueba.Models.Autentificacion;
 using MVC3AplicacionPrueba.Models.Repositorio;
